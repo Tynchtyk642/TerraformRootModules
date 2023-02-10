@@ -1,16 +1,19 @@
+provider "aws" {
+  region = "us-west-2"
+  
+}
 terraform {
-  required_version = ">= 1.1.0"
+  cloud {
+    organization = "akzhol_aws"
 
-  required_providers {
-    aws = {
-      source  = "hashicorp/aws"
-      version = "~> 4.0"
+    workspaces {
+      name = "akzhol_tfstate"
     }
   }
 }
 
 module "vpc" {
-  source                           = "../../modules/vpc"
+  source                           = "git::https://github.com/AkzholS7/ChildModule.git//vpc?ref=main"
   availability_zones_count         = 2
   availability_zones_count_private = 3
   subnet_cidr_bits                 = 8
@@ -19,7 +22,7 @@ module "vpc" {
 }
 
 module "eks" {
-  source         = "../../modules/eks"
+  source         = "git::https://github.com/AkzholS7/ChildModule.git//eks?ref=main"
   project        = "dev-eks"
   vpc_id         = module.vpc.vpc_id
   private_subnet = module.vpc.private_subnet_id
@@ -28,7 +31,7 @@ module "eks" {
 }
 
 module "instance" {
-  source         = "../../modules/instance"
+  source         = "git::https://github.com/AkzholS7/ChildModule.git//instance?ref=main"
   public_subnets = module.vpc.public_subnet_id
   vpc_id         = module.vpc.vpc_id
 
