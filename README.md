@@ -1,7 +1,7 @@
 # *Terraform AWS Root Deployment
 ## This module deploys an Amazon Web Services (AWS) infrastructure root module using Terraform.
 
-## Variables
+# Variables
 ## This module takes the following variables as input:
 
 - *region (optional, default: us-west-2) - The AWS region to deploy the infrastructure in.*
@@ -53,6 +53,6 @@
 aws eks --region <eks_region> update-kubeconfig --name <eks_name>
 ```
 
-## The "workspaces" block specifies the configuration options for the Terraform Cloud workspaces. A workspace is a place where Terraform keeps the state of your infrastructure, as well as any metadata about the infrastructure.
+ The "workspaces" block specifies the configuration options for the Terraform Cloud workspaces. A workspace is a place where Terraform keeps the state of your infrastructure, as well as any metadata about the infrastructure.
 
 ![photo_5418086731665752988_x](https://user-images.githubusercontent.com/100186256/218064906-4c662bc8-f72a-477a-8d25-5ac9fdf33e57.jpg)
