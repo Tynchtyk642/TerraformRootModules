@@ -29,7 +29,7 @@ resource "aws_key_pair" "deployer" {
   }
 }
 module "vpc" {
-  source =  "git::https://github.com/Tynchtyk642/TerraformChildModules.git//vpc?ref=nazim"
+  source = "git::https://github.com/Tynchtyk642/TerraformChildModules.git//vpc?ref=nazim"
 
   prefix          = var.prefix
   vpc_cidr_block  = "192.168.0.0/16"
@@ -41,21 +41,21 @@ module "vpc" {
 }
 
 module "eks" {
-  source =  "git::https://github.com/Tynchtyk642/TerraformChildModules.git//eks?ref=nazim"
-  
-  
+  source = "git::https://github.com/Tynchtyk642/TerraformChildModules.git//eks?ref=nazim"
+
+
   cluster_name  = "${var.env}-eks"
   prefix        = var.prefix
   subnet_ids    = module.vpc.private_subnets
   vpc_id        = module.vpc.vpc_id
   instance_type = "t3.micro"
-  key_name = aws_key_pair.deployer.key_name
+  key_name      = aws_key_pair.deployer.key_name
 }
 
 module "bastion" {
-  source =  "git::https://github.com/Tynchtyk642/TerraformChildModules.git//instance?ref=nazim"
+  source = "git::https://github.com/Tynchtyk642/TerraformChildModules.git//instance?ref=nazim"
 
-  ami = data.aws_ami.ubuntu.id
+  ami       = data.aws_ami.ubuntu.id
   prefix    = var.prefix
   subnet_id = module.vpc.public_subnets[0]
   key_name  = aws_key_pair.deployer.key_name
