@@ -6,19 +6,21 @@
 
 ## Providers
 
-No providers.
+| Name | Version |
+|------|---------|
+| <a name="provider_terraform"></a> [terraform](#provider\_terraform) | n/a |
 
 ## Modules
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_cloud-sql"></a> [cloud-sql](#module\_cloud-sql) | git::https://github.com/NurdaCodez/sourcer.git//module/cloud-sql | main |
-| <a name="module_instance"></a> [instance](#module\_instance) | git::https://github.com/NurdaCodez/sourcer.git//module/instance | main |
-| <a name="module_vpc"></a> [vpc](#module\_vpc) | git::https://github.com/NurdaCodez/sourcer.git//module/vpc | main |
+| <a name="module_gke"></a> [gke](#module\_gke) | git::https://github.com/NurdaCodez/sourcer.git//module/gke | main |
 
 ## Resources
 
-No resources.
+| Name | Type |
+|------|------|
+| [terraform_remote_state.vpc](https://registry.terraform.io/providers/hashicorp/terraform/latest/docs/data-sources/remote_state) | data source |
 
 ## Inputs
 
