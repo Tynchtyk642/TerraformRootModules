@@ -3,7 +3,7 @@ data "terraform_remote_state" "vpc" {
   workspace = terraform.workspace
   config = {
     bucket  = "nurda23bucket"
-    prefix  = "terraform/sql_vpc.tfstate/vpc/default.tfstate"
+    prefix  = "terraform/env/dev/vpc"
     credentials = "../optic.json"
   }
 }
@@ -24,5 +24,5 @@ module "gke" {
   pods_ipv4_cidr_block       = data.terraform_remote_state.vpc.outputs.cluster_pods_ip_cidr_range
   services_ipv4_cidr_block   = data.terraform_remote_state.vpc.outputs.cluster_services_ip_cidr_range
   authorized_ipv4_cidr_block = "192.168.2.246/32" #will be used for bastion in future 
-  depends_on_subnetwork      = data.terraform_remote_state.vpc.outputs.private_subnet.name
+  depends_on_subnetwork      = data.terraform_remote_state.vpc.outputs.private_subnet
 }
