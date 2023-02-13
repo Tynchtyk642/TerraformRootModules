@@ -7,7 +7,7 @@ terraform {
   }
   backend "gcs" {
       bucket      = "nurda23bucket"
-      prefix      = "terraform/env/dev/"
+      prefix      = "terraform/env/dev/vpc"
       credentials = "../optic.json"
     }
 }
